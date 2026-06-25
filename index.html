@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+el<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8"/>
@@ -12,75 +12,134 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --coral:#D4604A;
-  --coral-light:#E8826E;
-  --coral-pale:#FDF0ED;
-  --coral-mid:#F2A090;
-  --dark:#111118;
-  --dark2:#1E1E2C;
-  --mid:#3A3A52;
-  --gray:#72728A;
-  --light:#F7F7FA;
-  --white:#FFFFFF;
-  --gold:#E8A020;
-  --purple:#4340A8;
-  --purple-light:#6663CC;
-  --green:#1A8A5A;
+  --coral:#7B6FE0;
+  --coral-light:#9B8AFE;
+  --coral-pale:#D8D3F0;
+  --coral-mid:#B5ABFF;
+  --dark:#2A2845;
+  --dark2:#332F5C;
+  --mid:#5A5775;
+  --gray:#7A7890;
+  --light:#EBE8F6;
+  --white:#F3F1FA;
+  --gold:#7B6FE0;
+  --purple:#7B6FE0;
+  --purple-light:#9B8AFE;
+  --green:#7B6FE0;
 }
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;color:var(--dark);background:var(--white);line-height:1.6;overflow-x:hidden}
+body::before{
+  content:'';position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+  background-repeat:repeat;background-size:256px;
+  opacity:.4;
+}
+body>*{position:relative;z-index:1}
+
+/* ─── ELEMENTOS DECORATIVOS FLOTANTES ─── */
+.deco{
+  position:absolute;pointer-events:none;z-index:0;
+  border-radius:50%;
+  filter:blur(60px);
+  opacity:0.12;
+}
+.deco-1{
+  width:400px;height:400px;
+  background:radial-gradient(circle,var(--coral-mid),transparent 70%);
+  top:-100px;right:-80px;
+}
+.deco-2{
+  width:300px;height:300px;
+  background:radial-gradient(circle,var(--coral-pale),transparent 70%);
+  bottom:-50px;left:-60px;
+}
+.deco-3{
+  width:350px;height:350px;
+  background:radial-gradient(circle,var(--coral-mid),transparent 70%);
+  top:50%;right:-100px;
+  opacity:0.08;
+}
+
+/* ─── SEPARADORES ORGÁNICOS ─── */
+.section-wave{
+  width:100%;overflow:hidden;line-height:0;
+  margin:-1px 0;position:relative;z-index:1;
+}
+.section-wave svg{
+  display:block;width:100%;height:80px;
+}
+.section-wave.flip{transform:scaleY(-1)}
 
 /* ─── NAV ─── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
   display:flex;justify-content:space-between;align-items:center;
   padding:16px 5vw;
-  background:rgba(17,17,24,0.96);
-  backdrop-filter:blur(12px);
+  background:rgba(30,28,58,0.95);
+  backdrop-filter:blur(14px);
   border-bottom:1px solid rgba(255,255,255,0.06);
 }
 .nav-logo{
   font-family:'Playfair Display',serif;
-  font-size:1.1rem;color:var(--white);
+  font-size:1.1rem;color:#fff;
   text-decoration:none;letter-spacing:.5px;
 }
 .nav-logo span{color:var(--coral-light)}
 .nav-links{display:flex;gap:28px;list-style:none}
 .nav-links a{
   text-decoration:none;font-size:.82rem;font-weight:500;
-  color:rgba(255,255,255,.6);letter-spacing:.4px;transition:color .2s;
+  color:rgba(255,255,255,.55);letter-spacing:.4px;transition:color .2s;
 }
 .nav-links a:hover{color:var(--coral-light)}
 .nav-cta{
-  background:var(--coral);color:var(--white);
+  background:var(--coral);color:#fff;
   padding:9px 20px;border-radius:40px;
   font-size:.82rem;font-weight:600;text-decoration:none;
   transition:background .2s,transform .2s;
 }
 .nav-cta:hover{background:var(--coral-light);transform:translateY(-1px)}
 
+/* ─── HERO VIDEO ─── */
+.hero-video-wrap{
+  position:relative;
+  width:100%;
+  padding-top:56.25%;
+  overflow:hidden;
+  margin-top:60px;
+}
+.hero-video-wrap iframe{
+  position:absolute;
+  top:0;left:0;
+  width:100%;height:100%;
+  border:none;
+}
+@media(max-width:640px){
+  .hero-video-wrap{padding-top:75%;margin-top:52px}
+}
+
 /* ─── HERO ─── */
 #hero{
   min-height:auto;
-  background:var(--dark2);
+  background:transparent;
   display:flex;align-items:center;
-  padding:110px 5vw 10px;
+  padding:120px 5vw 40px;
   position:relative;overflow:hidden;
 }
 #hero::before{
   content:'';position:absolute;
   top:-200px;right:-200px;
   width:700px;height:700px;border-radius:50%;
-  background:radial-gradient(circle,rgba(212,96,74,.12) 0%,transparent 65%);
+  background:radial-gradient(circle,rgba(67,64,168,.06) 0%,transparent 65%);
 }
 #hero::after{
   content:'';position:absolute;
   bottom:-150px;left:-100px;
   width:500px;height:500px;border-radius:50%;
-  background:radial-gradient(circle,rgba(67,64,168,.1) 0%,transparent 65%);
+  background:radial-gradient(circle,rgba(67,64,168,.04) 0%,transparent 65%);
 }
 .hero-inner{
-  width:100%;max-width:1200px;position:relative;z-index:1;
+  width:100%;max-width:1100px;margin:0 auto;position:relative;z-index:1;
   display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;
 }
 .hero-eyebrow{
@@ -91,21 +150,21 @@ nav{
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .hero-eyebrow span{
   font-size:.75rem;font-weight:600;letter-spacing:2.5px;
-  text-transform:uppercase;color:rgba(255,255,255,.5);
+  text-transform:uppercase;color:var(--gray);
 }
 .hero-name{
   font-family: 'Cormorant Garamond', serif;
-  font-size:clamp(3.8rem,9vw,7rem);
-  line-height:1.05;color:var(--white);
+  font-size:clamp(3rem,7vw,5.5rem);
+  line-height:1.1;color:var(--dark);
   margin-bottom:10px;
 }
-.hero-name em{color:var(--coral-light);font-style:italic}
+.hero-name em{color:var(--coral);font-style:italic}
 .hero-role{
   display:flex;flex-wrap:wrap;align-items:center;gap:4px;
   margin-bottom:14px;
 }
 .role-sep{
-  color:rgba(255,255,255,.25);
+  color:rgba(0,0,0,.2);
   font-weight:300;
   font-size:.75rem;
 }
@@ -115,16 +174,16 @@ nav{
   font-weight:600;
   letter-spacing:2px;
   text-transform:uppercase;
-  color:rgba(255,255,255,.5);
+  color:var(--gray);
   transition:color .25s;
   cursor:default;
 }
 .role-tag:hover{
-  color:var(--coral-light);
+  color:var(--coral);
 }
 .hero-bio{
   font-family:'Lora',serif;
-  font-size:1.2rem;color:rgba(255,255,255,.7);
+  font-size:1.2rem;color:var(--mid);
   max-width:580px;line-height:1.9;
   margin-top:32px;margin-bottom:38px;font-weight:400;
 }
@@ -134,29 +193,29 @@ nav{
   padding:14px 32px;border-radius:50px;
   font-weight:600;font-size:.9rem;text-decoration:none;
   transition:all .25s;
-  box-shadow:0 6px 24px rgba(212,96,74,.35);
+  box-shadow:0 6px 24px rgba(67,64,168,.25);
 }
 .btn-hero-main:hover{background:var(--coral-light);transform:translateY(-2px)}
 .btn-hero-ghost{
-  border:1.5px solid rgba(255,255,255,.2);
-  color:rgba(255,255,255,.8);
+  border:1.5px solid rgba(0,0,0,.12);
+  color:var(--mid);
   padding:13px 30px;border-radius:50px;
   font-weight:500;font-size:.9rem;text-decoration:none;
   transition:all .25s;
 }
-.btn-hero-ghost:hover{border-color:var(--coral-light);color:var(--coral-light)}
+.btn-hero-ghost:hover{border-color:var(--coral);color:var(--coral)}
 .hero-stats{
   display:flex;gap:44px;
-  padding-top:38px;border-top:1px solid rgba(255,255,255,.08);
+  padding-top:38px;border-top:1px solid rgba(0,0,0,.08);
 }
 .stat-n{
   font-family:'Playfair Display',serif;
-  font-size:2.2rem;color:var(--coral-light);font-weight:700;
+  font-size:2.2rem;color:var(--coral);font-weight:700;
 }
-.stat-l{font-size:.78rem;color:rgba(255,255,255,.4);margin-top:2px;font-weight:400}
+.stat-l{font-size:.78rem;color:var(--gray);margin-top:2px;font-weight:400}
 
 /* ─── SECTION BASICS ─── */
-section{padding:88px 5vw}
+section{padding:88px 5vw;max-width:1200px;margin:0 auto}
 .s-tag{
   font-size:.72rem;font-weight:600;letter-spacing:3px;
   text-transform:uppercase;color:var(--coral);
@@ -261,7 +320,7 @@ section{padding:88px 5vw}
 .social-card .proj-org{color:var(--coral-light)}
 .social-card .proj-desc{color:rgba(255,255,255,.55)}
 .social-card .ptag{background:rgba(212,96,74,.2);color:var(--coral-light)}
-.social-card .ptag-p{background:rgba(102,99,204,.2);color:var(--purple-light)}
+.social-card .ptag-p{background:rgba(67,64,168,.2);color:var(--purple-light)}
 
 /* ─── PREMIOS ─── */
 #premios{background:var(--light)}
@@ -310,7 +369,7 @@ section{padding:88px 5vw}
 .fest-winner .fest-place{color:rgba(255,255,255,.45)}
 
 /* ─── HABILIDADES ─── */
-#habilidades{background:var(--white)}
+#habilidades{background:transparent}
 .hab-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
 .hab-group-title{
   font-size:1rem;font-weight:600;color:var(--dark);
@@ -342,14 +401,16 @@ section{padding:88px 5vw}
 .langs{display:flex;gap:16px;margin-top:8px}
 .lang-pill{
   flex:1;text-align:center;padding:18px 12px;
-  background:var(--light);border-radius:12px;
+  background:#fff;border-radius:12px;
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
 }
 .lang-name{font-weight:600;font-size:.95rem;color:var(--dark)}
 .lang-lv{font-size:.75rem;color:var(--gray);margin-top:3px}
 .formacion-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
 .form-item{
-  background:var(--light);border-radius:12px;
+  background:#fff;border-radius:12px;
   padding:16px 18px;border-left:3px solid var(--coral);
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
 }
 .form-titulo{font-size:.88rem;font-weight:600;color:var(--dark)}
 .form-inst{font-size:.78rem;color:var(--purple);font-weight:500;margin-top:3px}
@@ -375,12 +436,12 @@ section{padding:88px 5vw}
 
 /* ─── CONTACTO ─── */
 #contacto{
-  background:var(--dark2);text-align:center;
+  background:transparent;text-align:center;
 }
-#contacto .s-tag{color:var(--coral-light)}
-#contacto .s-title{color:var(--white)}
+#contacto .s-tag{color:var(--coral)}
+#contacto .s-title{color:var(--dark)}
 .contact-sub{
-  font-size:1rem;color:rgba(255,255,255,.5);
+  font-size:1rem;color:var(--gray);
   max-width:500px;margin:0 auto 48px;
   line-height:1.8;font-weight:300;
 }
@@ -388,40 +449,49 @@ section{padding:88px 5vw}
 .contact-btn{
   display:flex;align-items:center;gap:10px;
   padding:14px 26px;border-radius:50px;
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.1);
-  color:rgba(255,255,255,.85);
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  color:var(--dark);
   text-decoration:none;font-weight:500;font-size:.88rem;
   transition:all .25s;
 }
 .contact-btn:hover{
-  background:rgba(212,96,74,.18);
-  border-color:rgba(212,96,74,.4);
-  color:var(--coral-light);transform:translateY(-2px);
+  background:rgba(123,111,224,.06);
+  border-color:var(--coral);
+  color:var(--coral);transform:translateY(-2px);
+  box-shadow:0 4px 16px rgba(0,0,0,.06);
 }
 .contact-btn .ico{font-size:1rem}
 
 
 /* ─── FOOTER ─── */
 footer{
-  background:var(--dark);color:rgba(255,255,255,.3);
+  background:transparent;color:var(--gray);
   text-align:center;padding:26px 5vw;
-  font-size:.8rem;border-top:1px solid rgba(255,255,255,.05);
+  font-size:.8rem;border-top:1px solid rgba(0,0,0,.08);
 }
-footer span{color:var(--coral-light)}
+footer span{color:var(--coral)}
 
 /* ─── EXPERIENCIA SLIDER ─── */
-#experiencia{background:var(--white)}
+#experiencia{background:transparent}
 .exp-slide{
-  display:none;
-  grid-template-columns:1fr 1fr;
-  gap:40px;align-items:start;
-  animation:fadeSlide .35s ease;
+  display:flex;flex-direction:column-reverse;justify-content:flex-end;
+  gap:20px;
+  width:340px;min-width:340px;max-width:340px;
+  flex-shrink:0;
+  background:#fff;
+  border-radius:18px;
+  padding:24px;
+  box-shadow:0 4px 30px rgba(0,0,0,.07);
+  border:1px solid rgba(0,0,0,.06);
+  transition:box-shadow .3s,transform .3s;
 }
-@keyframes fadeSlide{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:translateX(0)}}
-.exp-slide.active{display:grid}
-.exp-badge-row{display:flex;align-items:center;gap:16px;margin-bottom:18px}
-.exp-category{font-size:.7rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--coral);cursor:default;transition:opacity .2s}
+.exp-slide:hover{
+  box-shadow:0 12px 40px rgba(0,0,0,.12);
+  transform:translateY(-4px);
+}
+.exp-badge-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.exp-category{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--coral);cursor:default;transition:opacity .2s}
 .exp-category:hover{opacity:.7}
 .exp-category:active{opacity:.5}
 .exp-year-label{font-size:.78rem;font-weight:700;color:var(--gray);cursor:pointer;transition:color .15s,background .15s;border-radius:4px;padding:2px 4px}
@@ -429,8 +499,8 @@ footer span{color:var(--coral-light)}
 .exp-year-label:active{color:var(--white);background:var(--dark)}
 .exp-org-name{
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2.4rem,4vw,3.6rem);
-  color:var(--dark);line-height:1.15;margin-bottom:6px;
+  font-size:clamp(1.5rem,3vw,1.9rem);
+  color:var(--dark);line-height:1.2;margin-bottom:4px;
   cursor:default;transition:color .3s;
 }
 .exp-org-name em{color:var(--dark);font-style:italic;transition:color .3s}
@@ -444,39 +514,51 @@ footer span{color:var(--coral-light)}
 .org-link:hover{color:var(--coral);border-bottom-color:var(--coral)}
 .exp-role{
   font-family:'Josefin Sans',sans-serif;
-  font-size:.95rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;
-  color:var(--coral);margin-bottom:8px;
+  font-size:.72rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--coral);margin-bottom:6px;
   cursor:default;display:inline-block;transition:all .2s;
   border-bottom:2px solid transparent;
 }
 .exp-role:hover{color:var(--dark);border-bottom-color:var(--coral);}
-.exp-desc{font-family:'Lora',serif;font-size:.95rem;color:var(--mid);line-height:1.85;margin-bottom:22px}
+.exp-desc{font-family:'Lora',serif;font-size:.85rem;color:var(--mid);line-height:1.7;margin-bottom:14px;
+  display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+}
 .exp-block{margin-bottom:18px}
 .exp-block-title{font-size:.68rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--coral);margin-bottom:8px}
 .exp-list{list-style:none;padding:0;margin:0}
 .exp-list li{font-size:.84rem;color:var(--mid);line-height:1.75;padding-left:14px;position:relative;margin-bottom:3px}
 .exp-list li::before{content:'·';position:absolute;left:0;color:var(--coral);font-weight:700}
-.exp-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.exp-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
 .exp-tag{
   font-family:'Josefin Sans',sans-serif;
-  font-size:.65rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
-  padding:6px 14px;border-radius:30px;
+  font-size:.58rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  padding:4px 10px;border-radius:20px;
   border:1px solid rgba(212,96,74,.3);color:var(--coral);
   background:rgba(212,96,74,.06);
   transition:all .2s;cursor:default;
 }
 .exp-tag:hover{background:var(--coral);color:var(--white);border-color:var(--coral)}
-.exp-img-box{
-  border-radius:16px;background:var(--light);
-  border:1.5px dashed rgba(0,0,0,.12);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  color:rgba(0,0,0,.22);font-size:.78rem;text-align:center;gap:10px;padding:24px;
-  width:100%;
+.slide-img-wrap{
+  border-radius:14px;overflow:hidden;
+  width:100%;height:220px;
 }
-.exp-img-box.main-img{height:420px}
+.slide-img-wrap img{
+  width:100% !important;height:100% !important;
+  object-fit:cover !important;display:block;
+  border-radius:14px !important;
+}
+.slide-img-wrap a{display:block;width:100%;height:100%}
+.exp-img-box{
+  border-radius:14px;background:rgba(255,255,255,.03);
+  border:1.5px dashed rgba(255,255,255,.1);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.2);font-size:.78rem;text-align:center;gap:10px;padding:24px;
+  width:100%;height:240px;
+}
+.exp-img-box.main-img{height:240px}
 .exp-nav{
   display:flex;align-items:center;justify-content:space-between;
-  margin-top:52px;padding-top:24px;border-top:1px solid rgba(0,0,0,.07);
+  margin-top:52px;padding-top:24px;border-top:1px solid rgba(0,0,0,.08);
 }
 .exp-counter{font-family:'Josefin Sans',sans-serif;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray)}
 .exp-counter b{color:var(--coral)}
@@ -486,16 +568,34 @@ footer span{color:var(--coral-light)}
   background:rgba(0,0,0,.15);cursor:pointer;transition:all .3s;border:none;padding:0;
 }
 .exp-dot.active{background:var(--coral);width:22px;border-radius:4px}
-.exp-slider-outer{display:flex;align-items:center;gap:24px}
-.exp-slider-inner{flex:1;position:relative}
-.exp-arrow{
-  flex-shrink:0;
-  width:40px;height:40px;border-radius:50%;
-  border:1px solid rgba(0,0,0,.22);background:transparent;
-  cursor:pointer;font-size:1.2rem;transition:all .25s;color:var(--gray);
-  display:flex;align-items:center;justify-content:center;
+.exp-slider-outer{
+  overflow-x:auto;overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  padding-bottom:8px;
 }
-.exp-arrow:hover{background:var(--coral);border-color:var(--coral);color:var(--white)}
+.exp-slider-outer::-webkit-scrollbar{display:none}
+.exp-slider-inner{
+  display:flex;gap:32px;
+  width:max-content;
+  padding-left:5vw;padding-right:10vw;
+}
+.scroll-hint{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:.72rem;font-weight:600;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gray);
+  margin-bottom:24px;
+  animation:hintPulse 2s ease-in-out infinite;
+}
+@keyframes hintPulse{0%,100%{opacity:.5}50%{opacity:1}}
+.hscroll-progress{
+  height:3px;background:rgba(0,0,0,.06);
+  border-radius:3px;margin-top:40px;overflow:hidden;
+}
+.hscroll-bar{
+  height:100%;width:0%;background:var(--coral);
+  border-radius:3px;transition:width .1s;
+}
 
 /* ─── TICKER ─── */
 .ticker-section{
@@ -524,7 +624,7 @@ footer span{color:var(--coral-light)}
 }
 .ticker-item img{
   height:100px;width:auto;object-fit:contain;
-  opacity:.6;
+  opacity:.75;
   transition:opacity .2s;
 }
 .ticker-item img:hover{opacity:1}
@@ -537,69 +637,185 @@ footer span{color:var(--coral-light)}
 .ticker-item:hover{color:var(--coral-light)}
 .ticker-dot{color:var(--coral);font-size:.55rem;flex-shrink:0}
 
-/* ─── RESPONSIVE ─── */
+/* ─── LENIS SMOOTH SCROLL ─── */
+html.lenis,html.lenis body{height:auto}
+html.lenis{scroll-behavior:auto}
+
+/* ─── SCROLL PROGRESS BAR ─── */
+.scroll-progress{
+  position:fixed;top:0;left:0;height:3px;
+  background:linear-gradient(90deg,var(--coral),var(--coral-light));
+  z-index:300;width:0%;
+  transition:width .05s linear;
+}
+
+/* ─── ANIMACIONES CSS ─── */
+.exp-slide{
+  transform-style:preserve-3d;perspective:800px;
+}
+.exp-tag{
+  transition:all .25s cubic-bezier(.4,0,.2,1);
+}
+.exp-tag:hover{
+  transform:translateY(-2px) scale(1.05);
+}
+.form-item{
+  transition:all .3s cubic-bezier(.4,0,.2,1);
+}
+.form-item:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 24px rgba(0,0,0,.08);
+  border-left-color:var(--coral-light);
+}
+.section-wave svg{
+  transition:transform .3s;
+}
+.ticker-item{
+  transition:transform .3s;
+}
+.ticker-item:hover{
+  transform:scale(1.08);
+}
+.hab-section{
+  transition:transform .3s;
+}
+.hab-section:hover{
+  transform:translateY(-2px);
+}
+.hero-eyebrow{
+  animation:fadeSlideIn .8s ease forwards;
+}
+@keyframes fadeSlideIn{
+  from{opacity:0;transform:translateY(15px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes floatSoft{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+.hero-btns a{
+  transition:all .3s cubic-bezier(.4,0,.2,1);
+}
+.nav-logo{
+  transition:transform .3s;
+}
+.nav-logo:hover{
+  transform:scale(1.03);
+}
+
+/* ─── CURSOR PERSONALIZADO ─── */
+.cursor{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--coral);
+  position:fixed;top:0;left:0;
+  pointer-events:none;z-index:9999;
+  mix-blend-mode:exclusion;
+  transform:translate(-50%,-50%);
+  transition:width .25s ease,height .25s ease;
+}
+.cursor.grow{width:52px;height:52px}
+@media(pointer:coarse){.cursor{display:none}}
+
+/* ─── BURGER NAV ─── */
+.nav-burger{
+  display:none;flex-direction:column;justify-content:space-between;
+  width:26px;height:18px;background:none;border:none;
+  cursor:pointer;padding:0;z-index:300;flex-shrink:0;
+}
+.nav-burger span{
+  width:100%;height:2px;background:#fff;
+  border-radius:2px;transition:transform .3s,opacity .3s;
+}
+.nav-burger.active span:nth-child(1){transform:rotate(45deg) translateY(8px)}
+.nav-burger.active span:nth-child(2){opacity:0}
+.nav-burger.active span:nth-child(3){transform:rotate(-45deg) translateY(-8px)}
+@keyframes menuFadeIn{
+  from{opacity:0;transform:translateY(-14px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ─── HABILIDADES GRID ─── */
+.hab-main-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:36px;margin-bottom:48px;
+}
+
+/* ─── HABILIDADES PILLS ─── */
+.hab-section{margin-bottom:2rem}
+.hab-section-title{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:1rem;padding-bottom:6px;border-bottom:0.5px solid rgba(0,0,0,.08)}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:0.5px solid rgba(0,0,0,.1);background:rgba(255,255,255,.6);font-family:'Josefin Sans',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--dark);transition:transform .2s,box-shadow .2s,background .2s,color .2s,border-color .2s}
+.pill:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.1);background:var(--coral);color:#fff;border-color:var(--coral)}
+.pill:hover i{color:var(--white)}
+.pill-coral:hover{background:var(--coral);border-color:var(--coral);color:#fff;box-shadow:0 6px 16px rgba(139,136,232,.3)}
+.pill-coral:hover i{color:#fff}
+.pill-purple:hover{background:var(--coral-light);border-color:var(--coral-light);color:#15132A;box-shadow:0 6px 16px rgba(168,165,245,.3)}
+.pill-purple:hover i{color:#15132A}
+.pill-teal:hover{background:var(--coral);border-color:var(--coral);color:#fff;box-shadow:0 6px 16px rgba(139,136,232,.3)}
+.pill-teal:hover i{color:#fff}
+.pill i{font-size:15px;color:var(--mid)}
+.pill-coral{background:rgba(123,111,224,.08);border-color:rgba(123,111,224,.2);color:var(--coral)}
+.pill-coral i{color:var(--coral)}
+.pill-purple{background:rgba(123,111,224,.06);border-color:rgba(123,111,224,.15);color:var(--purple)}
+.pill-purple i{color:var(--purple)}
+.pill-teal{background:rgba(123,111,224,.08);border-color:rgba(123,111,224,.18);color:var(--coral)}
+.pill-teal i{color:var(--coral)}
+
+/* ─── RESPONSIVE — TABLET (≤900px) ─── */
 @media(max-width:900px){
   .sobre-grid,.hero-inner{grid-template-columns:1fr}
-  .premios-grid{grid-template-columns:repeat(2,1fr)}
   .proj-card.featured{grid-template-columns:1fr}
   .proj-card.featured .proj-visual{display:none}
   .proj-feature{grid-template-columns:1fr}
   .proj-row{grid-template-columns:1fr 1fr}
   .social-grid{grid-template-columns:1fr}
   .hab-grid{grid-template-columns:1fr;gap:40px}
-  /* Slider experiencia: apila texto arriba, imagen abajo */
-  .exp-slide{grid-template-columns:1fr;gap:32px}
+  .exp-slide{min-width:55vw;max-width:380px}
   .exp-img-box.main-img{height:280px}
-  .exp-slider-outer{gap:12px}
-}
-@media(max-width:640px){
-  /* General */
-  section{padding:56px 5vw}
-  .nav-links{display:none}
-  /* Hero */
-  #hero{padding:90px 5vw 32px}
-  .hero-bio{font-size:1rem;margin-bottom:28px}
-  .hero-btns{margin-bottom:32px}
-  .hero-name{font-size:clamp(3rem,11vw,5rem)}
-  /* Servicios */
-  .premios-grid{grid-template-columns:1fr 1fr}
-  .proj-row{grid-template-columns:1fr}
-  .hero-stats{flex-wrap:wrap;gap:24px}
-  .servicios-grid{grid-template-columns:1fr}
-  /* Slider */
-  .exp-slide{grid-template-columns:1fr;gap:24px}
-  .exp-img-box.main-img{height:220px}
-  .exp-arrow{width:34px;height:34px;font-size:1rem}
-  .exp-slider-outer{gap:8px}
-  .exp-org-name{font-size:clamp(1.4rem,6vw,2rem)}
-  /* Títulos de sección */
-  .s-title{font-size:clamp(1.5rem,5vw,2rem);margin-bottom:28px}
-  /* Premios */
-  .premios-grid{grid-template-columns:1fr}
-  /* Habilidades */
-  .langs{flex-direction:column}
+  .hab-main-grid{grid-template-columns:repeat(2,1fr);gap:24px}
+  .fest-card{flex:1 1 200px}
 }
 
-/* ─── HABILIDADES PILLS ─── */
-.hab-section{margin-bottom:2rem}
-.hab-section-title{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:1rem;padding-bottom:6px;border-bottom:0.5px solid rgba(0,0,0,.1)}
-.pills{display:flex;flex-wrap:wrap;gap:8px}
-.pill{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:0.5px solid rgba(0,0,0,.12);background:var(--white);font-family:'Josefin Sans',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--dark);transition:transform .2s,box-shadow .2s,background .2s,color .2s,border-color .2s}
-.pill:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.12);background:var(--dark);color:var(--white);border-color:var(--dark)}
-.pill:hover i{color:var(--white)}
-.pill-coral:hover{background:#D85A30;border-color:#D85A30;color:#fff;box-shadow:0 6px 16px rgba(212,90,48,.3)}
-.pill-coral:hover i{color:#fff}
-.pill-purple:hover{background:#7F77DD;border-color:#7F77DD;color:#fff;box-shadow:0 6px 16px rgba(127,119,221,.3)}
-.pill-purple:hover i{color:#fff}
-.pill-teal:hover{background:#1D9E75;border-color:#1D9E75;color:#fff;box-shadow:0 6px 16px rgba(29,158,117,.3)}
-.pill-teal:hover i{color:#fff}
-.pill i{font-size:15px;color:var(--mid)}
-.pill-coral{background:#FAECE7;border-color:#F0997B;color:#712B13}
-.pill-coral i{color:#D85A30}
-.pill-purple{background:#EEEDFE;border-color:#AFA9EC;color:#3C3489}
-.pill-purple i{color:#7F77DD}
-.pill-teal{background:#E1F5EE;border-color:#5DCAA5;color:#085041}
-.pill-teal i{color:#1D9E75}
+/* ─── RESPONSIVE — MÓVIL (≤640px) ─── */
+@media(max-width:640px){
+  section{padding:52px 5vw}
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  .nav-cta{display:none}
+  .nav-links.open{
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    position:fixed;inset:0;
+    background:rgba(37,35,72,.98);
+    backdrop-filter:blur(14px);z-index:250;gap:32px;list-style:none;
+    animation:menuFadeIn .3s ease forwards;
+  }
+  .nav-links.open li{display:block;text-align:center}
+  .nav-links.open a{font-size:1.45rem;font-weight:600;color:rgba(255,255,255,.85)}
+  .nav-links.open a:hover{color:var(--coral-light)}
+  #hero{padding:86px 5vw 28px}
+  .hero-name{font-size:clamp(2.8rem,11vw,4.5rem)}
+  .hero-bio{font-size:1rem;margin-top:18px;margin-bottom:22px}
+  .hero-btns{flex-direction:column;gap:10px;margin-bottom:28px}
+  .btn-hero-main,.btn-hero-ghost{width:100%;text-align:center}
+  .hero-stats{flex-wrap:wrap;gap:18px}
+  .exp-slide{min-width:80vw;max-width:320px;padding:20px}
+  .exp-img-box.main-img{height:200px}
+  .exp-org-name{font-size:clamp(1.4rem,6vw,2rem)}
+  .hab-main-grid{grid-template-columns:1fr;gap:18px}
+  .langs{flex-direction:column}
+  .formacion-list{grid-template-columns:1fr}
+  .fest-row{flex-direction:column}
+  .fest-card{width:100%}
+  .ticker-track{height:100px}
+  .ticker-item{height:100px;padding:0 22px}
+  .ticker-item img{height:58px}
+  .proj-row{grid-template-columns:1fr}
+  .servicios-grid{grid-template-columns:1fr}
+  .contact-grid{flex-direction:column}
+  .contact-btn{justify-content:center}
+  .s-title{font-size:clamp(1.5rem,5vw,2rem);margin-bottom:22px}
+}
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
@@ -608,17 +824,27 @@ footer span{color:var(--coral-light)}
 <!-- ── NAV ── -->
 <nav>
   <a href="#hero" class="nav-logo">Sofía <span>G. Dradá</span></a>
-  <ul class="nav-links">
-
+  <ul class="nav-links" id="nav-links">
     <li><a href="#experiencia">Proyectos</a></li>
-    <li><a href="#premios">Premios</a></li>
+    <li><a href="#habilidades">Habilidades</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
+  <button class="nav-burger" id="nav-burger" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
   <a href="#contacto" class="nav-cta">Contrátame</a>
 </nav>
 
+<!-- ── HERO VIDEO ── -->
+<div class="hero-video-wrap">
+  <iframe src="https://player.vimeo.com/video/1019628269?autoplay=1&loop=1&muted=1&background=1"
+    allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+</div>
+
 <!-- ── HERO ── -->
 <section id="hero">
+  <div class="deco deco-1"></div>
+  <div class="deco deco-2"></div>
   <div class="hero-inner">
     <!-- Columna izquierda: nombre y botones -->
     <div>
@@ -628,8 +854,7 @@ footer span{color:var(--coral-light)}
       </div>
       <h1 class="hero-name">Sofia<br><em>Garzon Dradá</em></h1>
       <div class="hero-btns" style="margin-top:32px">
-        <a href="https://vimeo.com/user185990828" target="_blank" class="btn-hero-main">Ver Vimeo</a>
-        <a href="https://linktr.ee/sofiadrada" target="_blank" class="btn-hero-ghost">Linktree →</a>
+        <a href="https://vimeo.com/1202307277?share=copy&fl=sv&fe=ci" target="_blank" class="btn-hero-main">Ver Demo</a>
       </div>
     </div>
     <!-- Columna derecha: texto y stats -->
@@ -649,16 +874,19 @@ footer span{color:var(--coral-light)}
 </section>
 
 
+<div class="section-wave"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80Z" fill="var(--light)"/></svg></div>
+
 <!-- ── EXPERIENCIA ── -->
-<section id="experiencia">
+<section id="experiencia" style="background:var(--light);position:relative;overflow:visible">
+  <div class="deco deco-3"></div>
   <span class="s-tag">Proyectos</span>
   <h2 class="s-title">Historias que <em>impactan</em></h2>
 
+  <p class="scroll-hint">Desliza para explorar →</p>
   <div class="exp-slider-outer">
-  <button class="exp-arrow prev" onclick="changeSlide(-1)">‹</button>
   <div class="exp-slider-inner">
   <!-- Slide 1 -->
-  <div class="exp-slide active">
+  <div class="exp-slide">
     <div>
       <div class="exp-badge-row" style="flex-direction:column;align-items:flex-start;gap:4px">
         <span class="exp-category">ONG · Documental</span>
@@ -677,8 +905,15 @@ footer span{color:var(--coral-light)}
         <span class="exp-tag">Social Media</span>
       </div>
     </div>
-    <div style="border-radius:16px;overflow:hidden;width:70%;margin:0 auto">
-      <img src="posters/Dondelsolencuentra-hogar.png" alt="Poster Donde el Sol Encuentra Hogar" style="width:100%;height:auto;display:block;border-radius:16px">
+    <div class="slide-img-wrap">
+      <a href="https://drive.google.com/file/d/16ltFJSUn2I7VYP4oxtxcCkOksZXw3VJi/view?usp=sharing" target="_blank" style="display:block;position:relative;width:100%;height:100%">
+        <img src="posters/Poster dondelsolencuentrahogar (600 x 450 px) (1).png" alt="Poster Donde el Sol Encuentra Hogar">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.25);border-radius:14px;opacity:0;transition:opacity .3s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0">
+          <div style="width:64px;height:64px;background:rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center">
+            <div style="width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:20px solid #8B88E8;margin-left:4px"></div>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
 
@@ -702,9 +937,9 @@ footer span{color:var(--coral-light)}
         <span class="exp-tag">Comunicación</span>
       </div>
     </div>
-    <div style="border-radius:16px;overflow:hidden;width:70%;margin:0 auto;position:relative">
+    <div class="slide-img-wrap">
       <a href="https://www.instagram.com/reels/DWmqyV4jQJw/" target="_blank" style="display:block;position:relative">
-        <img src="posters/poster_Mascaras-de-amor.jpg" alt="Máscaras de Amor" style="width:100%;height:auto;display:block;border-radius:16px">
+        <img src="posters/poster_Mascaras-de-amor.jpg" alt="Máscaras de Amor">
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.25);border-radius:16px;opacity:0;transition:opacity .3s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0">
           <div style="width:64px;height:64px;background:rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center">
             <div style="width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:20px solid #D4604A;margin-left:4px"></div>
@@ -734,7 +969,16 @@ footer span{color:var(--coral-light)}
         <span class="exp-tag">Gestión de Producción</span>
       </div>
     </div>
-    <div class="exp-img-box main-img">📷 Subir foto</div>
+    <div class="slide-img-wrap">
+      <a href="https://drive.google.com/file/d/1JxvaxcibxNKc24ewPYhg6uXCp2BaqSgn/view?usp=sharing" target="_blank" style="display:block;position:relative;width:100%;height:100%">
+        <img src="posters/DUo (600x450).png" alt="DUO Limpiezas" style="object-position:center center">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.25);border-radius:14px;opacity:0;transition:opacity .3s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0">
+          <div style="width:64px;height:64px;background:rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center">
+            <div style="width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:20px solid #8B88E8;margin-left:4px"></div>
+          </div>
+        </div>
+      </a>
+    </div>
   </div>
 
   <!-- Slide 4 -->
@@ -758,9 +1002,9 @@ footer span{color:var(--coral-light)}
         <span class="exp-tag">Coordinación de Equipos</span>
       </div>
     </div>
-    <div style="border-radius:16px;overflow:hidden;width:70%;margin:0 auto;position:relative">
+    <div class="slide-img-wrap">
       <a href="https://youtu.be/QAuNr7jEMmE?si=i3NC7yJWMJDQN8Ex" target="_blank" style="display:block;position:relative">
-        <img src="posters/Poster-InfanciasinFronteras.png" alt="Infancias Migrantes" style="width:100%;height:auto;display:block;border-radius:16px">
+        <img src="posters/Poster infancias (600 x 450 px).png" alt="Infancias Migrantes">
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.25);border-radius:16px;opacity:0;transition:opacity .3s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0">
           <div style="width:64px;height:64px;background:rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center">
             <div style="width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:20px solid #D4604A;margin-left:4px"></div>
@@ -791,9 +1035,9 @@ footer span{color:var(--coral-light)}
         <span class="exp-tag">Producción Audiovisual</span>
       </div>
     </div>
-    <div style="border-radius:16px;overflow:hidden;width:70%;margin:0 auto;position:relative">
+    <div class="slide-img-wrap">
       <a href="https://www.redjesuitaconmigranteslac.org/soy-porque-somos" target="_blank" style="display:block;position:relative">
-        <img src="posters/Poster_SoyporqueSomos.png" alt="Soy porque Somos" style="width:100%;height:auto;display:block;border-radius:16px">
+        <img src="posters/Poster SoyporqueSomos (600 x 450 px).png" alt="Soy porque Somos">
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.25);border-radius:16px;opacity:0;transition:opacity .3s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0">
           <div style="width:64px;height:64px;background:rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center">
             <div style="width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:20px solid #D4604A;margin-left:4px"></div>
@@ -825,9 +1069,9 @@ footer span{color:var(--coral-light)}
         <span class="exp-tag">Storytelling Documental</span>
       </div>
     </div>
-    <div style="border-radius:16px;overflow:hidden;width:70%;margin:0 auto;position:relative">
+    <div class="slide-img-wrap">
       <a href="https://drive.google.com/file/d/1c6uw2D2c2QD8hnGKb4M7MoYLxoGd_wf7/view?usp=sharing" target="_blank" style="display:block;position:relative">
-        <img src="posters/Poster-Mujeres-rurales.png" alt="Mujeres Rurales" style="width:100%;height:auto;display:block;border-radius:16px">
+        <img src="posters/Poster-Mujeres-rurales.png" alt="Mujeres Rurales">
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.25);border-radius:16px;opacity:0;transition:opacity .3s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0">
           <div style="width:64px;height:64px;background:rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center">
             <div style="width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:20px solid #D4604A;margin-left:4px"></div>
@@ -837,51 +1081,39 @@ footer span{color:var(--coral-light)}
     </div>
   </div>
 
-  <!-- Slide 7 -->
+  <!-- Slide 7 — CePIA -->
   <div class="exp-slide">
     <div>
       <div class="exp-badge-row" style="flex-direction:column;align-items:flex-start;gap:4px">
-        <span class="exp-category">Cortometrajes · Ficción &amp; Documental</span>
-        <span class="exp-category" style="opacity:.7;letter-spacing:1.8px">2020 — Actualidad</span>
+        <span class="exp-category">Académico · Ayudantía</span>
+        <span class="exp-category" style="opacity:.7;letter-spacing:1.8px">Argentina · 2023 — 2025</span>
       </div>
-      <h3 class="exp-org-name" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-style:normal">Producciones Independientes</h3>
-      <div class="exp-org-sub">Proyectos Propios</div>
-      <div class="exp-role">Directora Creativa, Productora &amp; Editora</div>
-      <p class="exp-desc">Desarrollo y realización de cortometrajes documentales y de ficción, integrando dirección creativa, producción y edición audiovisual para proyectos de carácter cultural y social.</p>
+      <h3 class="exp-org-name"><em>Centro de Producción e<br>Investigación en Artes</em></h3>
+      <div class="exp-org-sub">CePIA / <a href="https://www.unc.edu.ar/" target="_blank" class="org-link">Universidad Nacional de Córdoba</a></div>
+      <div class="exp-role">Ayudante Alumna Ad Honorem</div>
+      <p class="exp-desc">Cobertura fotográfica y audiovisual de eventos institucionales y académicos del centro.</p>
       <div class="exp-tags">
-        <span class="exp-tag">Dirección Creativa</span>
-        <span class="exp-tag">Dirección Audiovisual</span>
-        <span class="exp-tag">Producción Audiovisual</span>
-        <span class="exp-tag">Edición de Video</span>
-        <span class="exp-tag">Narrativa Documental</span>
-        <span class="exp-tag">Storytelling</span>
-        <span class="exp-tag">Postproducción</span>
+        <span class="exp-tag">Fotografía</span>
+        <span class="exp-tag">Cobertura Audiovisual</span>
+        <span class="exp-tag">Eventos Institucionales</span>
       </div>
     </div>
-    <div class="exp-img-box main-img">📷 Subir foto</div>
-  </div>
-
-  </div>
-  <button class="exp-arrow next" onclick="changeSlide(1)">›</button>
-  </div>
-
-  <!-- Navegación -->
-  <div class="exp-nav">
-    <span class="exp-counter">Experiencia <b id="exp-current">1</b> de <b>7</b></span>
-    <div class="exp-dots-row">
-      <button class="exp-dot active" onclick="goToSlide(0)"></button>
-      <button class="exp-dot" onclick="goToSlide(1)"></button>
-      <button class="exp-dot" onclick="goToSlide(2)"></button>
-      <button class="exp-dot" onclick="goToSlide(3)"></button>
-      <button class="exp-dot" onclick="goToSlide(4)"></button>
-      <button class="exp-dot" onclick="goToSlide(5)"></button>
-      <button class="exp-dot" onclick="goToSlide(6)"></button>
+    <div class="slide-img-wrap">
+      <img src="posters/bannerPrincipal-webCepia-20252.png" alt="CePIA - Universidad Nacional de Córdoba">
     </div>
   </div>
+
+
+  </div>
+  </div>
+
 </section>
 
+<div class="section-wave flip"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80Z" fill="var(--light)"/></svg></div>
+
 <!-- ── TICKER ORGANIZACIONES ── -->
-<p style="font-family:'Josefin Sans',sans-serif;font-size:.95rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--dark);text-align:center;padding:20px 0 10px">Organizaciones</p>
+<div style="background:var(--light);padding:20px 0 20px;margin-top:-2px">
+<p style="font-family:'Josefin Sans',sans-serif;font-size:.95rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#3A3860;text-align:center;padding:0 0 10px;margin:0">Organizaciones</p>
 <div class="ticker-section">
   <div class="ticker-track">
     <!-- Primera pasada -->
@@ -900,13 +1132,16 @@ footer span{color:var(--coral-light)}
     <span class="ticker-item"><img src="logos/logoUV.jpg" alt="Universidad del Valle"></span><span class="ticker-dot">◆</span>
   </div>
 </div>
+</div>
+
+<div class="section-wave" style="background:var(--light);margin-top:-2px"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,0 L0,50 C240,10 480,70 720,30 C960,0 1200,60 1440,40 L1440,0Z" fill="var(--light)"/><path d="M0,50 C240,10 480,70 720,30 C960,0 1200,60 1440,40 L1440,80 L0,80Z" fill="var(--light)"/></svg></div>
 
 <!-- ── HABILIDADES ── -->
-<section id="habilidades">
+<section id="habilidades" style="background:var(--light)">
   <span class="s-tag">Competencias</span>
   <h2 class="s-title">Habilidades &amp; <em>formación</em></h2>
   <!-- Habilidades en grid 3 columnas -->
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-bottom:48px">
+  <div class="hab-main-grid">
     <div class="hab-section">
       <p class="hab-section-title">Producción &amp; postproducción</p>
       <div class="pills">
@@ -971,129 +1206,46 @@ footer span{color:var(--coral-light)}
   <!-- Formación académica debajo -->
   <div class="hab-group-title">Formación académica</div>
   <div class="formacion-list">
-    <div class="form-item">
-      <div class="form-titulo">Licenciatura en Cine y Medios Audiovisuales</div>
+    <a href="docs/certificacion-unc.pdf" target="_blank" class="form-item" style="text-decoration:none;display:block">
+      <div class="form-titulo">Licenciatura en Cine y Medios Audiovisuales <span style="font-size:.7rem;color:var(--coral);margin-left:6px">📄 Ver certificado</span></div>
       <div class="form-inst">Universidad Nacional de Córdoba · 2024 — en curso</div>
-    </div>
-    <div class="form-item">
-      <div class="form-titulo">Certificación en Formulación de Proyectos de Extensión</div>
+    </a>
+    <a href="docs/certificacion-formulacion.jpeg" target="_blank" class="form-item" style="text-decoration:none;display:block">
+      <div class="form-titulo">Certificación en Formulación de Proyectos de Extensión <span style="font-size:.7rem;color:var(--coral);margin-left:6px">📄 Ver certificado</span></div>
       <div class="form-inst">Universidad Nacional de Córdoba · 2022</div>
-    </div>
-    <div class="form-item">
-      <div class="form-titulo">Capacitación en Proyectos de Cine Documental Comunitario</div>
+    </a>
+    <a href="docs/certificado-cine-documental.pdf" target="_blank" class="form-item" style="text-decoration:none;display:block">
+      <div class="form-titulo">Capacitación en Proyectos de Cine Documental Comunitario <span style="font-size:.7rem;color:var(--coral);margin-left:6px">📄 Ver certificado</span></div>
       <div class="form-inst">ENERC — Escuela Nacional de Realización Cinematográfica · 2022</div>
-    </div>
-    <div class="form-item">
-      <div class="form-titulo">Técnica en Artes Escénicas</div>
+    </a>
+    <a href="docs/certificado-arte-teatral.jpeg" target="_blank" class="form-item" style="text-decoration:none;display:block">
+      <div class="form-titulo">Formación Juvenil en Arte Teatral <span style="font-size:.7rem;color:var(--coral);margin-left:6px">📄 Ver certificado</span></div>
       <div class="form-inst">Instituto de Bellas Artes · 2016</div>
-    </div>
-    <div class="form-item">
-      <div class="form-titulo">Elaboración de Guion &amp; Sesiones Creativas</div>
+    </a>
+    <a href="docs/certificado-guion-sesiones.jpg" target="_blank" class="form-item" style="text-decoration:none;display:block">
+      <div class="form-titulo">Elaboración de Guion &amp; Sesiones Creativas <span style="font-size:.7rem;color:var(--coral);margin-left:6px">📄 Ver certificado</span></div>
       <div class="form-inst">Enparalelo Fundación Algo en Común · 2021</div>
-    </div>
+    </a>
+    <a href="docs/certificado-salud-reproductiva.jpeg" target="_blank" class="form-item" style="text-decoration:none;display:block">
+      <div class="form-titulo">Taller de Formación en Salud y Derechos Sexuales y Reproductivos <span style="font-size:.7rem;color:var(--coral);margin-left:6px">📄 Ver certificado</span></div>
+      <div class="form-inst">Fundación Si Mujer · 2017</div>
+    </a>
+    <a href="docs/certificado-arte-digital.jpeg" target="_blank" class="form-item" style="text-decoration:none;display:block">
+      <div class="form-titulo">Acercamiento al Arte Digital y Animación 2D <span style="font-size:.7rem;color:var(--coral);margin-left:6px">📄 Ver certificado</span></div>
+      <div class="form-inst">Instituto de Bellas Artes · 2017</div>
+    </a>
+    <a href="docs/certificado-hilos-culturales.pdf" target="_blank" class="form-item" style="text-decoration:none;display:block">
+      <div class="form-titulo">Voluntaria en Programa de Extensión Hilos Culturales <span style="font-size:.7rem;color:var(--coral);margin-left:6px">📄 Ver certificado</span></div>
+      <div class="form-inst">Universidad Nacional de Córdoba · 2023</div>
+    </a>
+    <a href="docs/certificado-ayudantia-cepia.pdf" target="_blank" class="form-item" style="text-decoration:none;display:block">
+      <div class="form-titulo">Ayudantía Ad Honorem — CePIA <span style="font-size:.7rem;color:var(--coral);margin-left:6px">📄 Ver certificado</span></div>
+      <div class="form-inst">Universidad Nacional de Córdoba · 2023 — 2025</div>
+    </a>
   </div>
 </section>
 
-<!-- ── PREMIOS ── -->
-<section id="premios">
-  <span class="s-tag">Reconocimientos</span>
-  <h2 class="s-title">Premios &amp; <em>festivales</em></h2>
-  <p class="premios-intro">Seleccionada y premiada en festivales de Argentina, Colombia e Italia, con obras que cruzan géneros documentales, videodanza y cine comunitario.</p>
-  <div class="film-groups">
-
-    <!-- Lejos de la Chagra -->
-    <div class="film-group">
-      <div class="film-title-row">
-        <span class="film-name">"Lejos de la Chagra"</span>
-      </div>
-      <div class="fest-row">
-        <div class="fest-card fest-winner">
-          <div class="fest-logo"><span class="fest-logo-ph">Logo</span></div>
-          <div class="fest-info">
-            <div class="fest-award-label">1er Puesto</div>
-            <div class="fest-fest-name">Festival Soñar Soñar</div>
-            <div class="fest-place">Buenos Aires · 2021</div>
-          </div>
-        </div>
-        <div class="fest-card">
-          <div class="fest-logo"><span class="fest-logo-ph">Logo</span></div>
-          <div class="fest-info">
-            <div class="fest-award-label">Selección Oficial</div>
-            <div class="fest-fest-name">DetonarPreciso</div>
-            <div class="fest-place">Córdoba · 2022</div>
-          </div>
-        </div>
-        <div class="fest-card">
-          <div class="fest-logo"><span class="fest-logo-ph">Logo</span></div>
-          <div class="fest-info">
-            <div class="fest-award-label">Selección Oficial</div>
-            <div class="fest-fest-name">Colombia Migrante</div>
-            <div class="fest-place">Buenos Aires · 2023</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mujeres Rurales -->
-    <div class="film-group">
-      <div class="film-title-row">
-        <span class="film-name">"Mujeres Rurales"</span>
-      </div>
-      <div class="fest-row">
-        <div class="fest-card fest-winner">
-          <div class="fest-logo"><span class="fest-logo-ph">Logo</span></div>
-          <div class="fest-info">
-            <div class="fest-award-label">Premio Estímulo Cultura</div>
-            <div class="fest-fest-name">Alcaldía de Santiago de Cali</div>
-            <div class="fest-place">Cali · 2021</div>
-          </div>
-        </div>
-        <div class="fest-card">
-          <div class="fest-logo"><span class="fest-logo-ph">Logo</span></div>
-          <div class="fest-info">
-            <div class="fest-award-label">Selección Oficial</div>
-            <div class="fest-fest-name">Festival Ituango</div>
-            <div class="fest-place">Antioquia · 2022</div>
-          </div>
-        </div>
-        <div class="fest-card">
-          <div class="fest-logo"><span class="fest-logo-ph">Logo</span></div>
-          <div class="fest-info">
-            <div class="fest-award-label">Selección Oficial</div>
-            <div class="fest-fest-name">Invicines</div>
-            <div class="fest-place">Córdoba · 2022</div>
-          </div>
-        </div>
-        <div class="fest-card">
-          <div class="fest-logo"><span class="fest-logo-ph">Logo</span></div>
-          <div class="fest-info">
-            <div class="fest-award-label">Selección Oficial</div>
-            <div class="fest-fest-name">Festival Salvaje</div>
-            <div class="fest-place">Bogotá · 2022</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Yagé -->
-    <div class="film-group">
-      <div class="film-title-row">
-        <span class="film-name">"Yagé"</span>
-      </div>
-      <div class="fest-row">
-        <div class="fest-card">
-          <div class="fest-logo"><span class="fest-logo-ph">Logo</span></div>
-          <div class="fest-info">
-            <div class="fest-award-label">Selección</div>
-            <div class="fest-fest-name">La Danza in 1 minuto GEN Z</div>
-            <div class="fest-place">Turin, Italia · Screendance</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
+<div class="section-wave flip"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,50 C240,10 480,70 720,30 C960,0 1200,60 1440,40 L1440,80 L0,80Z" fill="var(--light)"/></svg></div>
 
 <!-- ── CONTACTO ── -->
 <section id="contacto">
@@ -1103,9 +1255,6 @@ footer span{color:var(--coral-light)}
   <div class="contact-grid">
     <a href="mailto:sofidrada@gmail.com" class="contact-btn">
       <span class="ico">✉️</span> sofidrada@gmail.com
-    </a>
-    <a href="https://linktr.ee/sofiadrada" target="_blank" class="contact-btn">
-      <span class="ico">🌿</span> Linktree
     </a>
     <a href="https://vimeo.com/user185990828" target="_blank" class="contact-btn">
       <span class="ico">🎬</span> Vimeo
@@ -1121,22 +1270,242 @@ footer span{color:var(--coral-light)}
   <p>© 2026 <span>Sofía Garzon Dradá</span> · Directora Creativa Audiovisual · Buenos Aires, Argentina</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
 <script>
-let expCurrent = 0;
-const expSlides = document.querySelectorAll('.exp-slide');
-const expDots = document.querySelectorAll('.exp-dot');
-const expCounter = document.getElementById('exp-current');
+// ─── LENIS SMOOTH SCROLL ───
+const lenis = new Lenis({ lerp: 0.06, smoothWheel: true });
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add(time => lenis.raf(time * 1000));
+gsap.ticker.lagSmoothing(0);
 
-function showExpSlide(n) {
-  expSlides.forEach(s => s.classList.remove('active'));
-  expDots.forEach(d => d.classList.remove('active'));
-  expCurrent = (n + expSlides.length) % expSlides.length;
-  expSlides[expCurrent].classList.add('active');
-  expDots[expCurrent].classList.add('active');
-  if (expCounter) expCounter.textContent = expCurrent + 1;
+// ─── GSAP SETUP ───
+gsap.registerPlugin(ScrollTrigger);
+
+// ─── TEXT SPLIT (hero name letter by letter, words don't break) ───
+document.querySelectorAll('.hero-name').forEach(el => {
+  const nodes = el.childNodes;
+  function splitText(node) {
+    if (node.nodeType === 3) {
+      const frag = document.createDocumentFragment();
+      node.textContent.split(/(\s+)/).forEach(word => {
+        if (!word) return;
+        if (/^\s+$/.test(word)) { frag.appendChild(document.createTextNode(word)); return; }
+        const wrap = document.createElement('span');
+        wrap.style.display = 'inline-block';
+        wrap.style.whiteSpace = 'nowrap';
+        [...word].forEach(c => {
+          const s = document.createElement('span');
+          s.className = 'char';
+          s.style.display = 'inline-block';
+          s.textContent = c;
+          wrap.appendChild(s);
+        });
+        frag.appendChild(wrap);
+      });
+      node.parentNode.replaceChild(frag, node);
+    } else if (node.nodeType === 1 && node.tagName !== 'BR') {
+      [...node.childNodes].forEach(splitText);
+    }
+  }
+  [...nodes].forEach(splitText);
+});
+
+// Hero video reveal
+gsap.from('.hero-video-wrap', {
+  opacity: 0, scale: 1.05, duration: 1.4, ease: 'power3.out', delay: 0.2
+});
+
+// Hero entrance with text split
+const heroTl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+heroTl
+  .from('.hero-eyebrow', { opacity: 0, y: 20, duration: 0.6 })
+  .from('.hero-name .char', { opacity: 0, y: 80, rotateX: -90, duration: 0.8, stagger: 0.025 }, '-=0.3')
+  .from('.hero-btns', { opacity: 0, y: 30, duration: 0.7 }, '-=0.4')
+  .from('.hero-role', { opacity: 0, x: -30, duration: 0.7 }, '-=0.5')
+  .from('.hero-bio', { opacity: 0, y: 30, duration: 0.8 }, '-=0.4');
+
+
+// Section titles reveal
+document.querySelectorAll('.s-tag, .s-title, .contact-sub').forEach(el => {
+  gsap.from(el, {
+    scrollTrigger: { trigger: el, start: 'top 88%' },
+    opacity: 0, y: 50, duration: 0.9, ease: 'power3.out'
+  });
+});
+
+// Stagger reveal for grouped elements
+['.pill', '.form-item', '.contact-btn'].forEach(sel => {
+  const parents = new Set();
+  document.querySelectorAll(sel).forEach(i => parents.add(i.parentElement));
+  parents.forEach(parent => {
+    gsap.from(parent.querySelectorAll(sel), {
+      scrollTrigger: { trigger: parent, start: 'top 85%' },
+      opacity: 0, y: 25, duration: 0.5, stagger: 0.05, ease: 'power2.out'
+    });
+  });
+});
+
+// Hab sections reveal
+document.querySelectorAll('.hab-section').forEach(el => {
+  gsap.from(el, {
+    scrollTrigger: { trigger: el, start: 'top 86%' },
+    opacity: 0, y: 40, duration: 0.7, ease: 'power2.out'
+  });
+});
+
+// ─── PARALLAX on scroll ───
+gsap.to('.hero-name', {
+  scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true },
+  y: -80, ease: 'none'
+});
+gsap.to('.hero-bio', {
+  scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true },
+  y: -40, ease: 'none'
+});
+document.querySelectorAll('.ticker-item img').forEach(img => {
+  gsap.from(img, {
+    scrollTrigger: { trigger: img, start: 'top 95%', end: 'bottom 5%', scrub: true },
+    scale: 0.85, opacity: 0.3
+  });
+});
+
+// ─── DECORATIVE ELEMENTS animation ───
+document.querySelectorAll('.deco').forEach((el, i) => {
+  gsap.to(el, {
+    scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true },
+    y: -120 - (i * 40),
+    x: (i % 2 === 0) ? 30 : -30,
+    ease: 'none'
+  });
+});
+
+// ─── INFINITE HORIZONTAL SCROLL ───
+const scrollContainer = document.querySelector('.exp-slider-outer');
+const track = document.querySelector('.exp-slider-inner');
+if (scrollContainer && track) {
+  const originalSlides = [...track.querySelectorAll('.exp-slide')];
+  const gap = 32;
+
+  // Clone: prepend + append for infinite loop
+  originalSlides.forEach(s => track.appendChild(s.cloneNode(true)));
+  [...originalSlides].reverse().forEach(s => track.insertBefore(s.cloneNode(true), track.firstChild));
+
+  // Calculate width of one set
+  let setWidth = 0;
+  function calcSet() {
+    setWidth = originalSlides.reduce((w, s) => w + s.offsetWidth + gap, 0);
+    scrollContainer.scrollLeft = setWidth;
+  }
+  calcSet();
+  window.addEventListener('resize', calcSet);
+
+  // Reset position seamlessly when hitting boundaries
+  let ticking = false;
+  scrollContainer.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      if (scrollContainer.scrollLeft >= setWidth * 2 - scrollContainer.offsetWidth) {
+        scrollContainer.scrollLeft -= setWidth;
+      } else if (scrollContainer.scrollLeft <= 5) {
+        scrollContainer.scrollLeft += setWidth;
+      }
+      ticking = false;
+    });
+  }, { passive: true });
+
+  // Reveal images as they enter view
+  document.querySelectorAll('.exp-slide img').forEach(img => {
+    gsap.set(img, { clipPath: 'inset(0 0% 0 0)' });
+  });
 }
-function changeSlide(dir) { showExpSlide(expCurrent + dir); }
-function goToSlide(n) { showExpSlide(n); }
+
+// ─── CURSOR PERSONALIZADO ───
+if (window.matchMedia('(pointer:fine)').matches) {
+  const cursor = document.createElement('div');
+  cursor.classList.add('cursor');
+  document.body.appendChild(cursor);
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  }, { passive: true });
+  document.querySelectorAll('a, button, .pill, .exp-tag, .contact-btn, .nav-cta').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('grow'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('grow'));
+  });
+}
+
+// ─── SCROLL PROGRESS BAR ───
+const progressBar = document.createElement('div');
+progressBar.classList.add('scroll-progress');
+document.body.appendChild(progressBar);
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = (window.scrollY / h * 100) + '%';
+}, { passive: true });
+
+// ─── EXPERIENCE SLIDES REVEAL ───
+document.querySelectorAll('.exp-slide').forEach((slide, i) => {
+  gsap.from(slide, {
+    scrollTrigger: { trigger: slide, start: 'top 92%' },
+    opacity: 0, y: 60, rotateY: -8, scale: 0.95,
+    duration: 0.8, delay: i * 0.08, ease: 'power3.out'
+  });
+});
+
+// ─── FORMACIÓN TITLE REVEAL ───
+document.querySelectorAll('.hab-group-title').forEach(el => {
+  gsap.from(el, {
+    scrollTrigger: { trigger: el, start: 'top 88%' },
+    opacity: 0, x: -40, duration: 0.7, ease: 'power3.out'
+  });
+});
+
+// ─── TICKER SECTION REVEAL ───
+gsap.from('.ticker-section', {
+  scrollTrigger: { trigger: '.ticker-section', start: 'top 90%' },
+  opacity: 0, y: 30, duration: 1, ease: 'power2.out'
+});
+
+// ─── WAVE PARALLAX ───
+document.querySelectorAll('.section-wave').forEach(wave => {
+  gsap.to(wave, {
+    scrollTrigger: { trigger: wave, start: 'top bottom', end: 'bottom top', scrub: true },
+    y: -15, ease: 'none'
+  });
+});
+
+// ─── CONTACT SECTION REVEAL ───
+gsap.from('#contacto', {
+  scrollTrigger: { trigger: '#contacto', start: 'top 80%' },
+  opacity: 0, scale: 0.97, duration: 1, ease: 'power2.out'
+});
+
+// ─── FOOTER REVEAL ───
+gsap.from('footer', {
+  scrollTrigger: { trigger: 'footer', start: 'top 95%' },
+  opacity: 0, y: 20, duration: 0.6, ease: 'power2.out'
+});
+
+// ─── BURGER NAV ───
+const navBurger = document.getElementById('nav-burger');
+const navLinks = document.getElementById('nav-links');
+if (navBurger && navLinks) {
+  navBurger.addEventListener('click', () => {
+    navBurger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navBurger.classList.remove('active');
+      navLinks.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+}
 </script>
 </body>
 </html>
