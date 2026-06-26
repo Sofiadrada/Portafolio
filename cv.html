@@ -34,7 +34,7 @@ body{
   max-width:800px;
   margin:40px auto;
   background:var(--white);
-  padding:48px 52px;
+  padding:44px 48px;
   box-shadow:0 4px 40px rgba(0,0,0,.1);
   position:relative;
 }
@@ -53,25 +53,25 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
-  padding-bottom:24px;
+  padding-bottom:20px;
   border-bottom:3px solid var(--coral);
-  margin-bottom:28px;
+  margin-bottom:24px;
 }
 .cv-name{
-  font-size:2.8rem;
+  font-size:2.6rem;
   font-weight:600;
   letter-spacing:-0.02em;
   text-transform:uppercase;
   line-height:1;
-  margin-bottom:10px;
+  margin-bottom:6px;
 }
 .cv-role{
-  font-size:1rem;
+  font-size:.82rem;
   font-weight:400;
   letter-spacing:0.06em;
   text-transform:uppercase;
   color:var(--gray);
-  line-height:1.6;
+  line-height:1.4;
   font-style:normal;
 }
 .cv-contact{
@@ -96,9 +96,9 @@ body{
 /* ─── ABOUT ─── */
 .cv-about{
   background:var(--light);
-  padding:18px 22px;
+  padding:16px 20px;
   border-radius:8px;
-  margin-bottom:28px;
+  margin-bottom:22px;
 }
 .cv-about h2{
   font-size:.7rem;
@@ -109,17 +109,17 @@ body{
   margin-bottom:8px;
 }
 .cv-about p{
-  font-size:1rem;
+  font-size:.85rem;
   color:var(--mid);
-  line-height:1.7;
+  line-height:1.5;
   font-style:normal;
 }
 
 /* ─── LAYOUT 2 COLUMNAS ─── */
 .cv-body{
   display:grid;
-  grid-template-columns:220px 1fr;
-  gap:36px;
+  grid-template-columns:200px 1fr;
+  gap:28px;
 }
 
 /* ─── SIDEBAR ─── */
@@ -133,16 +133,16 @@ body{
   padding-bottom:6px;
   border-bottom:1.5px solid var(--coral-pale);
 }
-.cv-sidebar section{margin-bottom:24px}
+.cv-sidebar section{margin-bottom:22px}
 
-.edu-item{margin-bottom:14px}
-.edu-title{font-size:.95rem;font-weight:600;color:var(--dark);line-height:1.4}
-.edu-inst{font-size:.85rem;color:var(--gray);margin-top:2px}
-.edu-year{font-size:.82rem;color:var(--coral);margin-top:2px;font-style:italic}
+.edu-item{margin-bottom:12px}
+.edu-title{font-size:.88rem;font-weight:600;color:var(--dark);line-height:1.3}
+.edu-inst{font-size:.75rem;color:var(--gray);margin-top:1px}
+.edu-year{font-size:.72rem;color:var(--coral);margin-top:1px}
 
 .skill-list{list-style:none;padding:0}
 .skill-list li{
-  font-size:.9rem;
+  font-size:.85rem;
   color:var(--mid);
   padding:4px 0;
   line-height:1.5;
@@ -154,10 +154,10 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:6px 0;
+  padding:3px 0;
 }
-.lang-name{font-size:.95rem;color:var(--dark)}
-.lang-level{font-size:.8rem;color:var(--gray);letter-spacing:0.05em;text-transform:uppercase;font-style:italic}
+.lang-name{font-size:.82rem;color:var(--dark)}
+.lang-level{font-size:.72rem;color:var(--gray);letter-spacing:0.05em;text-transform:uppercase}
 
 /* ─── MAIN CONTENT ─── */
 .cv-main h2{
@@ -171,7 +171,7 @@ body{
   border-bottom:1.5px solid var(--coral-pale);
 }
 
-.exp-item{margin-bottom:22px}
+.exp-item{margin-bottom:20px}
 .exp-item:last-child{margin-bottom:0}
 .exp-title-row{
   display:flex;
@@ -179,15 +179,15 @@ body{
   align-items:baseline;
   margin-bottom:2px;
 }
-.exp-proj{font-size:1.05rem;font-weight:600;color:var(--dark)}
+.exp-proj{font-size:1rem;font-weight:600;color:var(--dark)}
 .exp-proj em{font-style:normal;color:var(--coral)}
-.exp-company{font-size:.88rem;color:var(--gray);margin-bottom:6px;font-style:italic}
-.exp-summary{font-size:.92rem;color:var(--mid);line-height:1.65;margin-bottom:8px}
+.exp-company{font-size:.75rem;color:var(--gray);margin-bottom:4px}
+.exp-summary{font-size:.88rem;color:var(--mid);line-height:1.6;margin-bottom:8px}
 .exp-highlights{list-style:none;padding:0}
 .exp-highlights li{
-  font-size:.9rem;
+  font-size:.85rem;
   color:var(--mid);
-  line-height:1.6;
+  line-height:1.5;
   padding-left:14px;
   position:relative;
   margin-bottom:3px;
@@ -202,8 +202,8 @@ body{
 
 /* ─── PORTAFOLIO ─── */
 .cv-portfolio{
-  margin-top:24px;
-  padding-top:18px;
+  margin-top:20px;
+  padding-top:16px;
   border-top:1.5px solid var(--coral-pale);
 }
 .cv-portfolio h2{
@@ -235,13 +235,14 @@ body{
 .cv-portfolio svg{width:14px;height:14px}
 
 .cv-refs{
-  margin-top:16px;
-  font-size:.78rem;
+  margin-top:8px;
+  font-size:.75rem;
   color:var(--gray);
   font-style:normal;
 }
 
 /* ─── PRINT ─── */
+@page{size:A4;margin:0}
 @media print{
   body{background:none}
   .cv-page{
