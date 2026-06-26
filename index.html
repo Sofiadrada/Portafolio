@@ -87,6 +87,7 @@ nav{
 }
 .nav-logo span{color:var(--coral-light)}
 .nav-links{display:flex;gap:28px;list-style:none}
+.nav-mobile-cta{display:none}
 .nav-links a{
   text-decoration:none;font-size:.82rem;font-weight:400;
   color:rgba(255,255,255,.55);letter-spacing:0.08em;transition:color .2s;
@@ -803,6 +804,7 @@ html.lenis{scroll-behavior:auto}
   .nav-links{display:none}
   .nav-burger{display:flex}
   .nav-cta{display:none}
+  .nav-mobile-cta a{color:var(--coral-light) !important;font-weight:600}
   .nav-links.open{
     display:flex;flex-direction:column;
     align-items:center;justify-content:center;
@@ -812,6 +814,7 @@ html.lenis{scroll-behavior:auto}
     animation:menuFadeIn .3s ease forwards;
   }
   .nav-links.open li{display:block;text-align:center}
+  .nav-links.open .nav-mobile-cta{display:block}
   .nav-links.open a{font-size:1.45rem;font-weight:600;color:rgba(255,255,255,.85)}
   .nav-links.open a:hover{color:var(--coral-light)}
   #hero{padding:86px 5vw 28px}
@@ -836,6 +839,8 @@ html.lenis{scroll-behavior:auto}
   .contact-grid{flex-direction:column}
   .contact-btn{justify-content:center}
   .s-title{font-size:clamp(1.5rem,5vw,2rem);margin-bottom:22px}
+  .skill-category{padding:16px}
+  .tag{font-size:10px;padding:5px 10px}
 }
 </style>
 </head>
@@ -848,6 +853,7 @@ html.lenis{scroll-behavior:auto}
     <li><a href="#experiencia">Proyectos</a></li>
     <li><a href="#habilidades">Habilidades</a></li>
     <li><a href="#contacto">Contacto</a></li>
+    <li class="nav-mobile-cta"><a href="https://wa.me/543876322115" target="_blank">Contáctame</a></li>
   </ul>
   <button class="nav-burger" id="nav-burger" aria-label="Abrir menú">
     <span></span><span></span><span></span>
