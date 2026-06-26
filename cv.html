@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CV — Sofía Garzón</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --coral:#7B6FE0;
+  --coral-light:#9B8AFE;
+  --coral-pale:#D8D3F0;
+  --dark:#333333;
+  --dark2:#332F5C;
+  --mid:#555555;
+  --gray:#777777;
+  --light:#F3F1FA;
+  --white:#fff;
+}
+
+body{
+  font-family:'Cormorant Garamond',serif;
+  color:var(--dark);
+  background:#e8e5f0;
+  line-height:1.5;
+  font-weight:400;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+}
+
+.cv-page{
+  max-width:800px;
+  margin:40px auto;
+  background:var(--white);
+  padding:48px 52px;
+  box-shadow:0 4px 40px rgba(0,0,0,.1);
+  position:relative;
+}
+.cv-page::before{
+  content:'';
+  position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  opacity:.35;
+  pointer-events:none;
+  z-index:0;
+}
+.cv-page>*{position:relative;z-index:1}
+
+/* ─── HEADER ─── */
+.cv-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  padding-bottom:24px;
+  border-bottom:3px solid var(--coral);
+  margin-bottom:28px;
+}
+.cv-name{
+  font-size:2.8rem;
+  font-weight:600;
+  letter-spacing:-0.02em;
+  text-transform:uppercase;
+  line-height:1;
+  margin-bottom:10px;
+}
+.cv-role{
+  font-size:1rem;
+  font-weight:400;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:var(--gray);
+  line-height:1.6;
+  font-style:normal;
+}
+.cv-contact{
+  text-align:right;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  flex-shrink:0;
+}
+.cv-contact a,.cv-contact span{
+  font-size:.8rem;
+  color:var(--mid);
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:8px;
+}
+.cv-contact a:hover{color:var(--coral)}
+.cv-contact svg{width:14px;height:14px;flex-shrink:0;stroke:var(--coral)}
+
+/* ─── ABOUT ─── */
+.cv-about{
+  background:var(--light);
+  padding:18px 22px;
+  border-radius:8px;
+  margin-bottom:28px;
+}
+.cv-about h2{
+  font-size:.7rem;
+  font-weight:400;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--coral);
+  margin-bottom:8px;
+}
+.cv-about p{
+  font-size:1rem;
+  color:var(--mid);
+  line-height:1.7;
+  font-style:normal;
+}
+
+/* ─── LAYOUT 2 COLUMNAS ─── */
+.cv-body{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:36px;
+}
+
+/* ─── SIDEBAR ─── */
+.cv-sidebar h2{
+  font-size:.7rem;
+  font-weight:400;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--coral);
+  margin-bottom:12px;
+  padding-bottom:6px;
+  border-bottom:1.5px solid var(--coral-pale);
+}
+.cv-sidebar section{margin-bottom:24px}
+
+.edu-item{margin-bottom:14px}
+.edu-title{font-size:.95rem;font-weight:600;color:var(--dark);line-height:1.4}
+.edu-inst{font-size:.85rem;color:var(--gray);margin-top:2px}
+.edu-year{font-size:.82rem;color:var(--coral);margin-top:2px;font-style:italic}
+
+.skill-list{list-style:none;padding:0}
+.skill-list li{
+  font-size:.9rem;
+  color:var(--mid);
+  padding:4px 0;
+  line-height:1.5;
+  border-bottom:1px solid rgba(0,0,0,.04);
+}
+.skill-list li:last-child{border-bottom:none}
+
+.lang-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:6px 0;
+}
+.lang-name{font-size:.95rem;color:var(--dark)}
+.lang-level{font-size:.8rem;color:var(--gray);letter-spacing:0.05em;text-transform:uppercase;font-style:italic}
+
+/* ─── MAIN CONTENT ─── */
+.cv-main h2{
+  font-size:.7rem;
+  font-weight:400;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--coral);
+  margin-bottom:16px;
+  padding-bottom:6px;
+  border-bottom:1.5px solid var(--coral-pale);
+}
+
+.exp-item{margin-bottom:22px}
+.exp-item:last-child{margin-bottom:0}
+.exp-title-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  margin-bottom:2px;
+}
+.exp-proj{font-size:1.05rem;font-weight:600;color:var(--dark)}
+.exp-proj em{font-style:normal;color:var(--coral)}
+.exp-company{font-size:.88rem;color:var(--gray);margin-bottom:6px;font-style:italic}
+.exp-summary{font-size:.92rem;color:var(--mid);line-height:1.65;margin-bottom:8px}
+.exp-highlights{list-style:none;padding:0}
+.exp-highlights li{
+  font-size:.9rem;
+  color:var(--mid);
+  line-height:1.6;
+  padding-left:14px;
+  position:relative;
+  margin-bottom:3px;
+}
+.exp-highlights li::before{
+  content:'·';
+  position:absolute;
+  left:0;
+  color:var(--coral);
+  font-weight:700;
+}
+
+/* ─── PORTAFOLIO ─── */
+.cv-portfolio{
+  margin-top:24px;
+  padding-top:18px;
+  border-top:1.5px solid var(--coral-pale);
+}
+.cv-portfolio h2{
+  font-size:.7rem;
+  font-weight:400;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--coral);
+  margin-bottom:8px;
+}
+.cv-portfolio p{font-size:.8rem;color:var(--mid);margin-bottom:8px}
+.cv-portfolio a{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:.8rem;
+  color:var(--coral);
+  text-decoration:none;
+  padding:8px 16px;
+  border:1.5px solid var(--coral-pale);
+  border-radius:6px;
+  transition:all .2s;
+}
+.cv-portfolio a:hover{
+  background:var(--coral);
+  color:var(--white);
+  border-color:var(--coral);
+}
+.cv-portfolio svg{width:14px;height:14px}
+
+.cv-refs{
+  margin-top:16px;
+  font-size:.78rem;
+  color:var(--gray);
+  font-style:normal;
+}
+
+/* ─── PRINT ─── */
+@media print{
+  body{background:none}
+  .cv-page{
+    box-shadow:none;
+    margin:0;
+    padding:32px 40px;
+    max-width:none;
+  }
+  .cv-portfolio a{border:1px solid var(--coral)}
+  a{color:var(--coral) !important}
+}
+
+@media(max-width:640px){
+  .cv-page{margin:0;padding:28px 20px}
+  .cv-header{flex-direction:column;gap:16px}
+  .cv-contact{text-align:left}
+  .cv-contact a,.cv-contact span{justify-content:flex-start}
+  .cv-body{grid-template-columns:1fr;gap:24px}
+  .cv-name{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+<div class="cv-page">
+
+  <!-- HEADER -->
+  <header class="cv-header">
+    <div>
+      <h1 class="cv-name">Sofía Garzón</h1>
+      <p class="cv-role">Directora Creativa · Productora · Gestora de Contenidos Digitales</p>
+    </div>
+    <div class="cv-contact">
+      <a href="mailto:sofidrada@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+        sofidrada@gmail.com
+      </a>
+      <a href="https://wa.me/543876322115">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +54 387 632-2115
+      </a>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Colombia / Argentina
+      </span>
+    </div>
+  </header>
+
+  <!-- ACERCA DE MÍ -->
+  <div class="cv-about">
+    <h2>Acerca de mí</h2>
+    <p>Directora creativa especializada en contenido audiovisual y comunicación digital. He trabajado con organizaciones internacionales y marcas para contar historias que de verdad llegan.</p>
+  </div>
+
+  <!-- BODY -->
+  <div class="cv-body">
+
+    <!-- SIDEBAR -->
+    <aside class="cv-sidebar">
+      <section>
+        <h2>Educación</h2>
+        <div class="edu-item">
+          <div class="edu-title">Licenciatura en Cine y Medios Audiovisuales</div>
+          <div class="edu-inst">Universidad Nacional de Córdoba</div>
+          <div class="edu-year">2024 — en curso</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-title">Cine Documental Comunitario</div>
+          <div class="edu-inst">ENERC — Capacitación especializada</div>
+          <div class="edu-year">2022</div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Habilidades</h2>
+        <ul class="skill-list">
+          <li>Estrategia de contenido · Gestión de marca</li>
+          <li>Branded Content · Analítica & KPIs</li>
+          <li>Dirección creativa · Producción audiovisual</li>
+          <li>Premiere Pro · CapCut · Canva</li>
+          <li>Meta Ads · Google Ads · Hootsuite</li>
+          <li>Make · Zapier · ChatGPT · Notion AI</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Idiomas</h2>
+        <div class="lang-item">
+          <span class="lang-name">Español</span>
+          <span class="lang-level">Nativo</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">Inglés</span>
+          <span class="lang-level">Intermedio</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Referencias</h2>
+        <p class="cv-refs">Disponible bajo consulta</p>
+      </section>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="cv-main">
+      <h2>Experiencia Profesional</h2>
+
+      <div class="exp-item">
+        <div class="exp-title-row">
+          <span class="exp-proj">«Donde el Sol Encuentra Hogar» — <em>Directora</em></span>
+        </div>
+        <div class="exp-company">SJM / Jesuitenweltweit · 2026 — Actualidad</div>
+        <p class="exp-summary">Documental sobre mujeres migrantes en Argentina y Uruguay. Dirección general del proyecto, gestión del equipo humano, planificación y ejecución de rodajes, edición de video y postproducción, desarrollo del storytelling y narrativa documental.</p>
+        <ul class="exp-highlights">
+          <li>Dirección general y visión creativa del proyecto</li>
+          <li>Gestión y coordinación del equipo humano</li>
+          <li>Edición de video, postproducción y storytelling documental</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-title-row">
+          <span class="exp-proj">Telepacífico «Máscaras de Amor» — <em>Productora</em></span>
+        </div>
+        <div class="exp-company">Telepacífico · Colombia · 2025</div>
+        <p class="exp-summary">Serie de televisión para canal nacional colombiano. Responsable de la producción de campo, coordinación logística y ejecución de todas las fases del proceso de producción.</p>
+        <ul class="exp-highlights">
+          <li>Producción de campo en todas las fases del rodaje</li>
+          <li>Coordinación con equipo de canal nacional colombiano</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-title-row">
+          <span class="exp-proj">«Infancias Migrantes: Voces en Movimiento» — <em>Directora</em></span>
+        </div>
+        <div class="exp-company">SJM / Jesuitenweltweit · Buenos Aires · 2024</div>
+        <p class="exp-summary">Proyecto documental en curso. Dirección general, registro de imagen y video, edición audiovisual de mediometraje y piezas para redes sociales, gestión de la campaña digital del proyecto.</p>
+        <ul class="exp-highlights">
+          <li>Dirección documental y registro audiovisual</li>
+          <li>Edición de mediometraje y piezas para redes sociales</li>
+          <li>Gestión de la campaña digital del proyecto</li>
+        </ul>
+      </div>
+
+      <!-- PORTAFOLIO -->
+      <div class="cv-portfolio">
+        <h2>Portafolios</h2>
+        <p>Podés ver mi trabajo y proyectos en el siguiente link</p>
+        <a href="https://sofiadrada.github.io/Portafolio/" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          sofiadrada.github.io/Portafolio
+        </a>
+      </div>
+    </main>
+
+  </div>
+</div>
+</body>
+</html>
