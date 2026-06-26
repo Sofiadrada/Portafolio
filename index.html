@@ -1368,22 +1368,22 @@ document.querySelectorAll('.s-tag, .s-title, .contact-sub').forEach(el => {
 });
 
 // Stagger reveal for grouped elements
-['.pill', '.form-item', '.contact-btn'].forEach(sel => {
+['.tag', '.form-item', '.contact-btn'].forEach(sel => {
   const parents = new Set();
   document.querySelectorAll(sel).forEach(i => parents.add(i.parentElement));
   parents.forEach(parent => {
     gsap.from(parent.querySelectorAll(sel), {
-      scrollTrigger: { trigger: parent, start: 'top 85%' },
-      opacity: 0, y: 25, duration: 0.5, stagger: 0.05, ease: 'power2.out'
+      scrollTrigger: { trigger: parent, start: 'top 90%', once: true },
+      opacity: 0, y: 20, duration: 0.4, stagger: 0.03, ease: 'power2.out'
     });
   });
 });
 
-// Hab sections reveal
-document.querySelectorAll('.hab-section').forEach(el => {
+// Skill category reveal
+document.querySelectorAll('.skill-category').forEach(el => {
   gsap.from(el, {
-    scrollTrigger: { trigger: el, start: 'top 86%' },
-    opacity: 0, y: 40, duration: 0.7, ease: 'power2.out'
+    scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+    opacity: 0, y: 30, duration: 0.5, ease: 'power2.out'
   });
 });
 
