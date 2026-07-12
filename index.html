@@ -1609,6 +1609,27 @@ window.addEventListener('load', () => ScrollTrigger.refresh());
 if (document.fonts && document.fonts.ready) {
   document.fonts.ready.then(() => ScrollTrigger.refresh());
 }
+
+// ─── RED DE SEGURIDAD: revelar contenido que quedó pegado en opacity:0 ───
+// Si por cualquier motivo (fuente lenta, orden de carga, un scroll trigger
+// que no coincidió) una sección queda invisible, la mostramos igual pasado
+// un tiempo prudencial en vez de dejarla oculta para siempre.
+function revelarContenidoPegado() {
+  ScrollTrigger.refresh();
+  const selectorReveal = '.form-item, .tag, .contact-btn, .skill-category, .exp-slide, .hab-group-title, .s-tag, .s-title, .contact-sub, .ticker-section, #contacto, footer, .hero-eyebrow, .hero-btns, .hero-role, .hero-bio';
+  document.querySelectorAll(selectorReveal).forEach(el => {
+    const opacity = parseFloat(getComputedStyle(el).opacity);
+    const top = el.getBoundingClientRect().top;
+    if (opacity < 1 && top < window.innerHeight + 1200) {
+      gsap.to(el, { opacity: 1, y: 0, x: 0, duration: 0.4, overwrite: 'auto' });
+    }
+  });
+}
+window.addEventListener('load', () => setTimeout(revelarContenidoPegado, 1800));
+window.addEventListener('scroll', () => {
+  clearTimeout(window._revealSafetyTimer);
+  window._revealSafetyTimer = setTimeout(revelarContenidoPegado, 400);
+}, { passive: true });
 </script>
 </body>
 </html>
