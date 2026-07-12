@@ -811,6 +811,7 @@ html.lenis{scroll-behavior:auto}
   .fest-card{flex:1 1 200px}
   .hero-stats{gap:32px}
   .hero-btns{margin-bottom:36px}
+  .exp-nav{display:none}
 }
 
 /* ─── RESPONSIVE — MÓVIL (≤640px) ─── */
@@ -1149,6 +1150,19 @@ html.lenis{scroll-behavior:auto}
   </div>
   </div>
 
+  <div class="exp-nav" id="exp-nav">
+    <span class="exp-counter"><b id="exp-counter-current">01</b> / 07</span>
+    <div class="exp-dots-row" id="exp-dots-row">
+      <button class="exp-dot active" data-index="0" aria-label="Ir al proyecto 1"></button>
+      <button class="exp-dot" data-index="1" aria-label="Ir al proyecto 2"></button>
+      <button class="exp-dot" data-index="2" aria-label="Ir al proyecto 3"></button>
+      <button class="exp-dot" data-index="3" aria-label="Ir al proyecto 4"></button>
+      <button class="exp-dot" data-index="4" aria-label="Ir al proyecto 5"></button>
+      <button class="exp-dot" data-index="5" aria-label="Ir al proyecto 6"></button>
+      <button class="exp-dot" data-index="6" aria-label="Ir al proyecto 7"></button>
+    </div>
+  </div>
+
 </section>
 
 <div class="section-wave flip"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80Z" fill="var(--light)"/></svg></div>
@@ -1448,6 +1462,38 @@ if (scrollContainer && track) {
   calcSet();
   window.addEventListener('resize', calcSet);
 
+  // ─── Dots + contador (navegación del carrusel en escritorio) ───
+  const dotsRow = document.getElementById('exp-dots-row');
+  const dots = dotsRow ? [...dotsRow.querySelectorAll('.exp-dot')] : [];
+  const counterEl = document.getElementById('exp-counter-current');
+  const slideOffsets = [];
+  function calcOffsets() {
+    let acc = 0;
+    slideOffsets.length = 0;
+    originalSlides.forEach(s => { slideOffsets.push(acc); acc += s.offsetWidth + gap; });
+  }
+  calcOffsets();
+  window.addEventListener('resize', calcOffsets);
+
+  function updateActiveDot() {
+    if (!dots.length || !setWidth) return;
+    const rel = ((scrollContainer.scrollLeft % setWidth) + setWidth) % setWidth;
+    let idx = 0;
+    for (let i = 0; i < slideOffsets.length; i++) {
+      if (rel >= slideOffsets[i] - gap / 2) idx = i;
+    }
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    if (counterEl) counterEl.textContent = String(idx + 1).padStart(2, '0');
+  }
+  updateActiveDot();
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.dataset.index, 10);
+      scrollContainer.scrollTo({ left: setWidth + slideOffsets[idx], behavior: 'smooth' });
+    });
+  });
+
   // Reset position seamlessly when hitting boundaries
   let ticking = false;
   scrollContainer.addEventListener('scroll', () => {
@@ -1459,6 +1505,7 @@ if (scrollContainer && track) {
       } else if (scrollContainer.scrollLeft <= 5) {
         scrollContainer.scrollLeft += setWidth;
       }
+      updateActiveDot();
       ticking = false;
     });
   }, { passive: true });
